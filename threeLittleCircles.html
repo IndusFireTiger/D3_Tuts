@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3 Examples</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+    <svg width="720" height="220">
+        <!-- <circle cx="40" cy="100" r="10"></circle>
+            <circle cx="80" cy="40" r="10"></circle>
+            <circle cx="120" cy="100" r="10"></circle> -->
+        <circle cy="100"></circle>
+        <circle cy="100"></circle>
+        <circle cy="100"></circle>
+    </svg>
+</body>
+<script>
+    // manipulate them using selections
+    var svg = d3.select("svg");
+
+    var circle = svg.selectAll("circle").data([32, 57, 112, 293]);
+
+    var circleEnter = circle.append("circle");
+    // circleEnter.attr("cy", 60);
+    // circleEnter.attr("cx", function (d, i) { return i * 100 + 30; });
+    // circleEnter.attr("r", function (d) { return Math.sqrt(d); });
+    // circle.attr("cy", 60);
+    circle.attr("cx", function (d, i) { return i * 100 + 30; });
+    circle.attr("r", function (d) { return Math.sqrt(d); });
+</script>
+
+</html>
