@@ -10,27 +10,36 @@
 
 <body>
     <svg width="720" height="220">
-        <!-- <circle cx="40" cy="100" r="10"></circle>
-            <circle cx="80" cy="40" r="10"></circle>
-            <circle cx="120" cy="100" r="10"></circle> -->
-        <circle cy="100"></circle>
-        <circle cy="100"></circle>
-        <circle cy="100"></circle>
+        <svg width="720" height="120">
+            <circle cx="40" cy="60" r="10"></circle>
+            <circle cx="80" cy="60" r="10"></circle>
+            <circle cx="120" cy="60" r="10"></circle>
+        </svg>
     </svg>
 </body>
 <script>
-    // manipulate them using selections
+    var circle = d3.selectAll("circle");
+    circle.style("fill", "steelblue");
+    // circle.attr("r", 30);
+    circle.data([32, 57, 112]);
+    circle.attr("r", function (d) { return Math.sqrt(d); });
+    circle.attr("cx", function (d, i) { return i * 100 + 30; });
+
+
     var svg = d3.select("svg");
 
-    var circle = svg.selectAll("circle").data([32, 57, 112, 293]);
+    var circle = svg.selectAll("circle")
+        .data([32, 57, 112, 293]);
 
-    var circleEnter = circle.append("circle");
-    // circleEnter.attr("cy", 60);
-    // circleEnter.attr("cx", function (d, i) { return i * 100 + 30; });
-    // circleEnter.attr("r", function (d) { return Math.sqrt(d); });
-    // circle.attr("cy", 60);
-    circle.attr("cx", function (d, i) { return i * 100 + 30; });
-    circle.attr("r", function (d) { return Math.sqrt(d); });
+    var circleEnter = circle.enter().append("circle");
+
+    circleEnter.attr("cy", 60);
+    circleEnter.style("fill", "steelblue");
+    circleEnter.attr("cx", function (d, i) { return i * 100 + 30; });
+    circleEnter.attr("r", function (d) { return Math.sqrt(d); });
+
+
+    // try exit later
 </script>
 
 </html>
