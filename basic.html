@@ -14,11 +14,10 @@
     <p>paragraph</p>
     <p>paragraph</p>
     <p>paragraph</p>
-    <p>paragraph</p>
     <div id="div_id">a span selected by id</div>
     <div class="div_class">a span selected by class</div>
     <br>
-    
+
     <table>
         <caption>Nested selection</caption>
         <tr>
@@ -44,18 +43,10 @@
     d3.select("#div_id").style("color", "green");
     d3.selectAll(".div_class ").style('color', 'brown');
     d3.select("tr").selectAll("td").style('background-color', 'red');
-
-    d3.selectAll("p")   // selection all elements
-        .data([15, 16, 23, 42, 50, 64])
-        .style("font-size", function (d) { return d + "px"; }) // dynamic properties d3js.org
-        .text(function (d) { return "I’m number " + d + "!"; })
-    d3.selectAll("p").style("color", function (d, i) {      // dynamic properties d3js.org
-        return i % 2 ? "#999" : "#000";
-    });
     // Update…
     var p = d3.select("body")
         .selectAll("p")
-        .data([4, 8, 15, 16, 23, 42])
+        .data([15, 16, 23, 42, 50, 64])
         .text(function (d) { return d; });
 
     // Enter…
@@ -64,6 +55,14 @@
 
     // Exit…
     p.exit().remove();
+    
+    d3.selectAll("p")   // selection all elements
+        .style("font-size", function (d) { return d + "px"; }) // dynamic properties d3js.org
+        .text(function (d) { return "I’m number " + d + "!"; })
+    d3.selectAll("p").style("color", function (d, i) {      // dynamic properties d3js.org
+        return i % 2 ? "#999" : "#000";
+    });
+
 </script>
 
 </html>
