@@ -15,10 +15,37 @@
     <p>paragraph</p>
     <p>paragraph</p>
     <p>paragraph</p>
+    <div id="div_id">a span selected by id</div>
+    <div class="div_class">a span selected by class</div>
+    <br>
+    
+    <table>
+        <caption>Nested selection</caption>
+        <tr>
+            <td>
+                Head One
+            </td>
+            <td>
+                Head Two
+            </td>
+        </tr>
+        <tr>
+            <td>
+                d1
+            </td>
+            <td>
+                d2
+            </td>
+        </tr>
+    </table>
 </body>
 <script>
     d3.select("body").style("background-color", "pink"); // selection d3js.org
-    d3.selectAll("p")
+    d3.select("#div_id").style("color", "green");
+    d3.selectAll(".div_class ").style('color', 'brown');
+    d3.select("tr").selectAll("td").style('background-color', 'red');
+
+    d3.selectAll("p")   // selection all elements
         .data([15, 16, 23, 42, 50, 64])
         .style("font-size", function (d) { return d + "px"; }) // dynamic properties d3js.org
         .text(function (d) { return "I’m number " + d + "!"; })
